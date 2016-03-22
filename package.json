@@ -1,0 +1,20 @@
+{
+  "name": "require-glob-array",
+  "version": "1.0.0-1",
+  "description": "`require` node modules and place their exported values in an array",
+  "scripts": {
+    "test": "cd test && node test.js"
+  },
+  "homepage": "https://github.com/seangenabe/require-glob-array",
+  "author": "Sean Genabe <seangenabe@outlook.com>",
+  "repository": "seangenabe/require-glob-array",
+  "license": "MIT",
+  "main": "index.js",
+  "keywords": [
+    "require",
+    "glob"
+  ],
+  "dependencies": {
+    "globby": "^4.0.0"
+  }
+}
