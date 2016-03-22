@@ -15,5 +15,7 @@ module.exports = function requireGlobArray(patterns, opts) {
     patterns = ['**/*.js']
   }
   return globby.sync(patterns, opts)
-    .map(path => require(Path.join(opts.cwd || process.cwd(), path)))
+    .map(function(path) {
+      return require(Path.join(opts.cwd || process.cwd(), path))
+    })
 }
