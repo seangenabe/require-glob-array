@@ -25,6 +25,7 @@ module.exports = function requireGlobArray(patterns, opts) {
       }
       catch (err) {
         throw new RequireError(
+          realpath,
           "An error occurred while trying to require the file " + realpath,
           err
         )
