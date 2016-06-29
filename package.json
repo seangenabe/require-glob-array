@@ -16,6 +16,6 @@
   ],
   "dependencies": {
     "composite-error": "^0.1.1",
-    "globby": "^4.0.0"
+    "globby": "^4.1.0"
   }
 }
