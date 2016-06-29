@@ -18,7 +18,7 @@ module.exports = function requireGlobArray(patterns, opts) {
   }
   return globby.sync(patterns, opts)
     .map(function(path) {
-      let realpath
+      var realpath
       try {
         realpath = Path.join(opts.cwd || process.cwd(), path)
         return require(realpath)
