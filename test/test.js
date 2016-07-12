@@ -23,13 +23,13 @@ t.test('glob without cwd', function(t) {
 })
 
 t.test("return path", function(t) {
-  let result = req({ cwd: __dirname + '/fixture1/dir', returnPath: true })
+  var result = req({ cwd: __dirname + '/fixture1/dir', returnPath: true })
   t.ok(setEqual(result, [['b.data.js', 2], ['a.data.js', 1]], orderEqual))
   t.end()
 })
 
 t.test("return nested paths", function(t) {
-  let result = req({ cwd: __dirname + '/fixture1', returnPath: true })
+  var result = req({ cwd: __dirname + '/fixture1', returnPath: true })
   t.ok(setEqual(
     result,
     [['dir/a.data.js', 1], ['c.data.js', 3], ['dir/b.data.js', 2]],

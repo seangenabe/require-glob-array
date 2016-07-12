@@ -13,7 +13,7 @@ function requireGlobArrayCore(sync, patterns, opts) {
     patterns = null
   }
   opts = opts || {}
-  let returnPath = opts.returnPath
+  var returnPath = opts.returnPath
   if (!patterns) {
     patterns = ['**/*.js']
   }
@@ -22,7 +22,7 @@ function requireGlobArrayCore(sync, patterns, opts) {
     var realpath
     try {
       realpath = Path.join(opts.cwd || process.cwd(), path)
-      let req = require(realpath)
+      var req = require(realpath)
       if (returnPath) {
         return [path, req]
       }
