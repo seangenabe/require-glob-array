@@ -31,6 +31,22 @@ are globbed.
 Parameters:
 * `patterns: string|array`: `minimatch` [patterns](https://github.com/isaacs/minimatch#usage) passed to `globby`. Defaults to `**/*.js`.
 * `options: object`: `glob` [options](https://github.com/isaacs/node-glob#options) passed to globby.
+* `options.returnPath`: Include the path in the return value. If `true`, instead of each export value, each item in the return array will now be `[path, export]`, where:
+  * `path`: The globbed path
+  * `export`: The export value
+  Default: `undefined`.
+
+Returns:
+*  `Array`: The exported modules.
+
+### requireGlobArray.async([patterns], [options])
+
+Run asynchronously. Has similar options to `requireGlobArray` (the synchronous version above).
+
+The synchronous version is the default because it's probably what they'd want when they `require` a bunch of files.
+
+Returns:
+* `Promise<Array>`: The exported modules.
 
 ## NOT compatible with Browserify
 

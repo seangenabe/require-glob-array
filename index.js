@@ -5,7 +5,7 @@ var Path = require('path')
 var CompositeError = require('composite-error')
 var Util = require('util')
 
-module.exports = function requireGlobArray(patterns, opts) {
+function requireGlobArrayCore(sync, patterns, opts) {
   if (typeof patterns === 'object' && !Array.isArray(patterns) &&
     opts === undefined) {
 
@@ -13,24 +13,44 @@ module.exports = function requireGlobArray(patterns, opts) {
     patterns = null
   }
   opts = opts || {}
+  let returnPath = opts.returnPath
   if (!patterns) {
     patterns = ['**/*.js']
   }
-  return globby.sync(patterns, opts)
-    .map(function(path) {
-      var realpath
-      try {
-        realpath = Path.join(opts.cwd || process.cwd(), path)
-        return require(realpath)
+
+  function processPath(path) {
+    var realpath
+    try {
+      realpath = Path.join(opts.cwd || process.cwd(), path)
+      let req = require(realpath)
+      if (returnPath) {
+        return [path, req]
       }
-      catch (err) {
-        throw new RequireError(
-          realpath,
-          "An error occurred while trying to require the file " + realpath,
-          err
-        )
-      }
-    })
+      return req
+    }
+    catch (err) {
+      throw new RequireError(
+        realpath,
+        "An error occurred while trying to require the file " + realpath,
+        err
+      )
+    }
+  }
+
+  if (sync) {
+    return globby.sync(patterns, opts).map(processPath)
+  }
+  return globby(patterns, opts).then(function(result) {
+    return result.map(processPath)
+  })
+}
+
+module.exports = function requireGlobArray(patterns, opts) {
+  return requireGlobArrayCore(true, patterns, opts)
+}
+
+module.exports.async = function requireGlobArrayAsync(patterns, opts) {
+  return requireGlobArrayCore(false, patterns, opts)
 }
 
 function RequireError(realpath, message, innerErrors) {
@@ -38,5 +58,6 @@ function RequireError(realpath, message, innerErrors) {
   this.path = realpath
   this.name = 'RequireError'
 }
+module.exports.RequireError = RequireError
 
 Util.inherits(RequireError, CompositeError)

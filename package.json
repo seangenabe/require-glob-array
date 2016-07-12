@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "description": "`require` node modules and place their exported values in an array",
   "scripts": {
-    "test": "cd test && node test.js"
+    "test": "tap test/test.js"
   },
   "homepage": "https://github.com/seangenabe/require-glob-array",
   "author": "Sean Genabe <seangenabe@outlook.com>",
@@ -16,6 +16,7 @@
   ],
   "dependencies": {
     "composite-error": "^0.1.1",
-    "globby": "^5.0.0"
+    "globby": "^5.0.0",
+    "tap": "^6.1.1"
   }
 }
