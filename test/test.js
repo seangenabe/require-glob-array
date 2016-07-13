@@ -8,6 +8,11 @@ t.ok(
   'basic functionality'
 )
 
+t.ok(
+  setEqual(req({ cwd: './test/fixture1/dir' }), [2, 1]),
+  'relative require'
+)
+
 t.same(
   req(['**/*.js', '!b.data.js'], { cwd: __dirname + '/fixture1/dir'}),
   [1],

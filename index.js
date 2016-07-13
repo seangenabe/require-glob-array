@@ -21,8 +21,8 @@ function requireGlobArrayCore(sync, patterns, opts) {
   function processPath(path) {
     var realpath
     try {
-      realpath = Path.join(opts.cwd || process.cwd(), path)
-      var req = require(realpath)
+      var cwd = opts.cwd || '.'
+      var req = require(Path.resolve(process.cwd(), cwd, path))
       if (returnPath) {
         return [path, req]
       }
