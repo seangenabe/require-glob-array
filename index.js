@@ -19,7 +19,6 @@ function requireGlobArrayCore(sync, patterns, opts) {
   }
 
   function processPath(path) {
-    var realpath
     try {
       var cwd = opts.cwd || '.'
       var req = require(Path.resolve(process.cwd(), cwd, path))
@@ -30,8 +29,8 @@ function requireGlobArrayCore(sync, patterns, opts) {
     }
     catch (err) {
       throw new RequireError(
-        realpath,
-        "An error occurred while trying to require the file " + realpath,
+        path,
+        "An error occurred while trying to require the file " + path,
         err
       )
     }
