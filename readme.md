@@ -1,6 +1,6 @@
 # require-glob-array
 
-`require` node modules and place their exported values in an array
+require node modules and place their exported values in an array
 
 [![npm](https://img.shields.io/npm/v/require-glob-array.svg?style=flat-square)](https://www.npmjs.com/package/require-glob-array)
 [![Build Status](https://img.shields.io/travis/seangenabe/require-glob-array/master.svg?style=flat-square)](https://travis-ci.org/seangenabe/require-glob-array)
