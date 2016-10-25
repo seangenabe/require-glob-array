@@ -19,6 +19,6 @@
     "globby": "^6.0.0"
   },
   "devDependencies": {
-    "tap": "^7.0.0"
+    "tap": "^8.0.0"
   }
 }
