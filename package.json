@@ -1,6 +1,6 @@
 {
   "name": "require-glob-array",
-  "version": "2.1.3",
+  "version": "4.0.0",
   "description": "`require` node modules and place their exported values in an array",
   "scripts": {
     "test": "tap test/test.js"
