@@ -15,7 +15,7 @@
     "glob"
   ],
   "dependencies": {
-    "composite-error": "^1.0.0",
+    "error-ex": "^1.3.0",
     "globby": "^6.0.0"
   },
   "devDependencies": {
