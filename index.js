@@ -3,7 +3,6 @@
 var globby = require('globby')
 var Path = require('path')
 var errorEx = require('error-ex')
-var Util = require('util')
 
 var RequireError = errorEx('JSONError')
 
@@ -58,5 +57,3 @@ module.exports.async = function requireGlobArrayAsync(patterns, opts) {
 }
 
 module.exports.RequireError = RequireError
-
-Util.inherits(RequireError, CompositeError)
