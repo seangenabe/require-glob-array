@@ -2,8 +2,10 @@
 
 var globby = require('globby')
 var Path = require('path')
-var CompositeError = require('composite-error')
+var errorEx = require('error-ex')
 var Util = require('util')
+
+var RequireError = errorEx('JSONError')
 
 function requireGlobArrayCore(sync, patterns, opts) {
   if (typeof patterns === 'object' && !Array.isArray(patterns) &&
@@ -28,11 +30,14 @@ function requireGlobArrayCore(sync, patterns, opts) {
       return req
     }
     catch (err) {
-      throw new RequireError(
-        path,
-        "An error occurred while trying to require the file " + path,
-        err
-      )
+      let newErr = new RequireError("Error requiring file", {
+        path: errorEx.append("%s"),
+        errMessage: errorEx.line("%s")
+      })
+      newErr.err = err
+      newErr.path = path
+      newErr.errMessage = err.message
+      throw newErr
     }
   }
 
@@ -52,11 +57,6 @@ module.exports.async = function requireGlobArrayAsync(patterns, opts) {
   return requireGlobArrayCore(false, patterns, opts)
 }
 
-function RequireError(realpath, message, innerErrors) {
-  CompositeError.call(this, message, innerErrors)
-  this.path = realpath
-  this.name = 'RequireError'
-}
 module.exports.RequireError = RequireError
 
 Util.inherits(RequireError, CompositeError)
