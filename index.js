@@ -2,9 +2,9 @@
 
 var globby = require('globby')
 var Path = require('path')
-var errorEx = require('error-ex')
+var makeErrorCause = require('make-error-cause')
 
-var RequireError = errorEx('JSONError')
+var RequireError = makeErrorCause('RequireError')
 
 function requireGlobArrayCore(sync, patterns, opts) {
   if (typeof patterns === 'object' && !Array.isArray(patterns) &&
@@ -29,14 +29,7 @@ function requireGlobArrayCore(sync, patterns, opts) {
       return req
     }
     catch (err) {
-      let newErr = new RequireError("Error requiring file", {
-        path: errorEx.append("%s"),
-        errMessage: errorEx.line("%s")
-      })
-      newErr.err = err
-      newErr.path = path
-      newErr.errMessage = err.message
-      throw newErr
+      throw new RequireError("Error requiring file " + path, err)
     }
   }
 

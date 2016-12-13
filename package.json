@@ -15,8 +15,8 @@
     "glob"
   ],
   "dependencies": {
-    "error-ex": "^1.3.0",
-    "globby": "^6.0.0"
+    "globby": "^6.0.0",
+    "make-error-cause": "^1.2.2"
   },
   "devDependencies": {
     "tap": "^8.0.0"
