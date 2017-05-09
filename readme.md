@@ -1,5 +1,7 @@
 # require-glob-array
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/seangenabe/require-glob-array.svg)](https://greenkeeper.io/)
+
 require node modules and place their exported values in an array
 
 [![npm](https://img.shields.io/npm/v/require-glob-array.svg?style=flat-square)](https://www.npmjs.com/package/require-glob-array)
