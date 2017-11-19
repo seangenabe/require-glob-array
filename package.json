@@ -15,7 +15,7 @@
     "glob"
   ],
   "dependencies": {
-    "globby": "^6.0.0",
+    "globby": "^7.1.1",
     "make-error-cause": "^1.2.2"
   },
   "devDependencies": {
