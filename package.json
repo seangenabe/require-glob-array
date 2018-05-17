@@ -19,6 +19,6 @@
     "make-error-cause": "^1.2.2"
   },
   "devDependencies": {
-    "tap": "^10.0.0"
+    "tap": "^12.0.0"
   }
 }
